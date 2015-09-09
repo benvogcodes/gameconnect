@@ -1,8 +1,11 @@
 class FavoritesController < ApplicationController
+
+  before_filter :authorize
+
   def index
     if !signed_in?
 
-      redirect '/login'
+      redirect_to '/login'
 
     else
       @user = current_user()
@@ -20,7 +23,7 @@ class FavoritesController < ApplicationController
     @game = Game.find(params[:game_key])
     @user.favorites << @game
 
-    redirect '/users/:id'
+    redirect_to '/users/:id'
   end
 
   # def show
@@ -38,6 +41,6 @@ class FavoritesController < ApplicationController
     p @favorite
     @favorite[0].destroy
 
-    redirect '/users/:id'
+    redirect_to '/users/:id'
   end
 end

@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+
+  before_filter :authorize
+
   def index
     if signed_in?
 

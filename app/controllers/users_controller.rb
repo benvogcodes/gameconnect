@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  # before_filter :authorize, :except => [:index, :create]
+
   def index
     if signed_in?
 
@@ -11,25 +14,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    if signed_in?
-
-      @user = current_user()
-
-      redirect "/users/#{@user.id}"
-
-    else
-      erb :'users/new'
-    end
   end
 
   def create
-    p params
-    p session
-    @user = User.create(username: params[:username],password: params[:password],email: params[:email])
-
-    signin()
-    p @user
-    redirect "/users/#{@user.id}"
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to '/'
+    else
+      redirect_to '/signup'
+    end
   end
 
   def show
@@ -53,4 +47,9 @@ class UsersController < ApplicationController
 
   # def destroy
   # end
+
+private
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 end
