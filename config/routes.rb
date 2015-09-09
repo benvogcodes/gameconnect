@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'application#index'
+
+  get 'application/index'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'favorites/index'
 
   get 'favorites/new'

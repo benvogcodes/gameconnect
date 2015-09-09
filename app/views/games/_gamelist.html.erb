@@ -1,0 +1,23 @@
+<table class='all_games pure-table pure-table-bordered'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Platform</th>
+        <th>Developer</th>
+        <th>Genre</th>
+        <th>Favorite</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% Game.all.each do |game| %>
+        <tr>
+          <td><%= game.title %></td>
+          <td><%= game.platform %></td>
+          <td><%= game.developer %></td>
+          <td><%= game.genre %></td>
+          <td><a href="#">Add to Favorites</a></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

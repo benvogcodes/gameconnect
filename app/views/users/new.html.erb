@@ -1,2 +1,28 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="centered">
+  <h1 class="centered-text">Insert Coin</h1>
+
+  <form class="pure-form pure-form-aligned reg_form" action="/users" method="post">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for='username'>Username</label>
+        <input id="username" type="text" name="username" placeholder="Username" required>
+      </div>
+
+      <div class="pure-control-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" placeholder="Password" required>
+      </div>
+
+      <div class="pure-control-group">
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" placeholder="Email Address" required>
+      </div><br>
+
+      <div ="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary reg_form_submit">Submit</button>
+      </div>
+    </fieldset><br><br><br>
+    <a class="centered already_member" href="/users/login">Already a member?</a><br><br>
+  </form>
+
+</div><br><br><br>

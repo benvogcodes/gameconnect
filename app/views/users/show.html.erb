@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="centered">
+  <h1 style="text-align: center">Welcome <%=@user.username%>!</h1>
+
+  <h3>Favorite Videogames</h3>
+  <table class="all_games pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Platform</th>
+        <th>Developer</th>
+        <th>Genre</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.games.each do |game| %>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= game.platform %></td>
+        <td><%= game.developer %></td>
+        <td><%= game.genre %></td>
+        <td><a class="remove_favorite" href="/favorites/<%= game.id%>/destroy?game_key=<%=game.id%>">Remove</a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table><br>
+
+  <a href="/games"><button class="add-fav pure-button">Add a Favorite</button></a>
+</div><br>

@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user1 = User.create(username:'hectorgomez',email:'a@b.com',password:'hectorgomez')
+user2 = User.create(username:'lojack411',email:'c@d.com',password:'lojack411')
+user3 = User.create(username:'queenbee42',email:'e@f.com',password:'queenbee42')
+user4 = User.create(username:'bobo55',email:'g@h.com',password:'bobo55')
+user5 = User.create(username:'wyldstyle93',email:'i@j.com',password:'wyldstyle93')
+
+game1 = Game.create(title:'Super Mario Bros.',platform:'Nintendo Entertainment System',developer:'Nintendo',genre:'Platformer')
+game2 = Game.create(title:'The Legend of Zelda',platform:'Nintendo Entertainment System',developer:'Nintendo',genre:'Adventure')
+game3 = Game.create(title:'The Elder Scrolls V: Skyrim',platform:'PC',developer:'Bethesda Softworks',genre:'Role-Playing')
+game4 = Game.create(title:'Katamari Damacy',platform:'Playstation 2',developer:'Namco',genre:'Puzzle')
+game5 = Game.create(title:'E.T. The Extra-Terrestrial',platform:'Atari 2600',developer:'Activision',genre:'Adventure')
+
+favorite1 = Favorite.create(user_id: 1,game_id: 1)
+favorite2 = Favorite.create(user_id: 1,game_id: 2)
+favorite3 = Favorite.create(user_id: 4,game_id: 1)
+favorite4 = Favorite.create(user_id: 4,game_id: 2)
+favorite5 = Favorite.create(user_id: 4,game_id: 5)

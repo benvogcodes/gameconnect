@@ -1,2 +1,57 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<div class="centered">
+  <h1 style="text-align: center">View All Games Here</h1>
+
+  <table class='all_games pure-table pure-table-bordered'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Platform</th>
+        <th>Developer</th>
+        <th>Genre</th>
+        <th>Favorite</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% Game.all.each do |game| %>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= game.platform %></td>
+        <td><%= game.developer %></td>
+        <td><%= game.genre %></td>
+        <td><a class="add_favorite" href="/users/<%= current_user().id %>?game_key=<%= game.id %>">Add to Favorites</a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table><br>
+
+  <button class='show_add_form add-fav pure-button'>Add a Game</button>
+
+  <form class='add_game pure-form pure-form-aligned' action="/games" method="post">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for='title'>Title</label>
+        <input id="title" type="text" name="title" placeholder="Title" required>
+      </div>
+
+      <div class="pure-control-group">
+        <label for="platform">Platform</label>
+        <input id="platform" type="text" name="platform" placeholder="Platform" required>
+      </div>
+
+      <div class="pure-control-group">
+        <label for='developer'>Developer</label>
+        <input id="developer" type="text" name="developer" placeholder="Developer" required>
+      </div>
+
+      <div class="pure-control-group">
+        <label for="genre">Genre</label>
+        <input id="genre" type="text" name="genre" placeholder="Genre" required>
+      </div>
+
+      <div>
+        <button type="submit" class="add_form_submit pure-button pure-button-primary">Submit</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
