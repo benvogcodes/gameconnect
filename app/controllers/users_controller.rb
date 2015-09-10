@@ -3,40 +3,42 @@ class UsersController < ApplicationController
   # before_filter :authorize, :except => [:index, :create]
 
   def index
-    if signed_in?
 
-      @user = current_user()
-      redirect "/users/#{@user.id}"
+    # if signed_in?
 
-    else
-      erb :'/users/index'
-    end
+    #   @user = current_user()
+    #   redirect "/users/#{@user.id}"
+
+    # else
+    #   erb :'/users/index'
+    # end
   end
 
   def new
+    @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
       redirect_to '/'
     else
-      redirect_to '/signup'
+      render :new
     end
   end
 
   def show
-    if !signed_in?
+    # if !signed_in?
 
-      redirect '/login'
+    #   redirect '/login'
 
-    else
-      @user = current_user()
-      @favorite_games = Game.joins(:favorites,:users)
+    # else
+    #   @user = current_user()
+    #   @favorite_games = Game.joins(:favorites,:users)
 
-      erb :'users/show'
-    end
+    #   erb :'users/show'
+    # end
   end
 
   # def edit

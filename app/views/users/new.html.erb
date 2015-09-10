@@ -1,14 +1,18 @@
 <div class="centered">
   <h1 class="centered-text">Insert Coin</h1>
 
-  <%= form_for :user, url: '/users', class: 'pure-form pure-form-aligned reg_form' do |f| %>
+  <%= form_for @user, class: 'pure-form pure-form-aligned reg_form' do |f| %>
   <div class="pure-control-group">
-    <%= label_tag :username, 'username' %>
-    <%= f.text_field :username %>
+    <%= f.label :username, 'username' %>
+    <div>
+      <%= f.text_field :username %>
+    </div>
   </div>
   <div class="pure-control-group">
     <%= label_tag :password, 'password' %>
-    <%= f.password_field :password %>
+    <div>
+      <%= f.password_field :password %>
+    </div>
   </div>
   <div class="pure-control-group">
     <%= label_tag :password_confirmation, 'password_confirmation' %>
@@ -17,12 +21,9 @@
   <div class="pure-control-group">
     <%= label_tag :email, 'email' %>
     <%= f.text_field :email %>
-  </div>
+  </div><br>
   <div ="pure-controls">
     <%= f.submit "Submit" %>
   </div>
   <a class="centered already_member" href="/login">Already a member?</a><br><br>
-  <% end %>
-
-
-
+<% end %>
